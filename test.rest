@@ -1,0 +1,24 @@
+###
+POST http://localhost:5000/todos
+Content-Type: application/json
+
+{
+    "description": "Should wash my car today"
+}
+
+###
+GET http://localhost:5000/todos
+
+###
+GET http://localhost:5000/todos/6
+
+###
+PUT http://localhost:5000/todos/1
+Content-Type: application/json
+
+{
+    "description": "Should bath today"
+}
+
+###
+DELETE http://localhost:5000/todos/6
