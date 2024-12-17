@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: perntodo
+  api:
+    build: ./server
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+  web:
+    build: ./client
+    ports:
+      - 3000:3000

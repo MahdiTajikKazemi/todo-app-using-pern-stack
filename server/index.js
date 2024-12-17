@@ -11,6 +11,18 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
 
+//When running with docker should hit this route first for creating todo table in db
+//Trying to implement a migration script in docker compose config file later
+app.get("/create", async (req, res) => {
+  try {
+    await pool.query(
+      "CREATE TABLE todo (todo_id SERIAL PRIMARY KEY, description VARCHAR(255))"
+    );
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 app.post("/todos", async (req, res) => {
   const { description } = req.body;
 
